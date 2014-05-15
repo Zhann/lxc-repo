@@ -1,0 +1,10 @@
+############
+## Subnet ##
+############
+
+subnet <%= @subnet %> netmask <%= @netmask %> {
+  range <%= @range_start %> <%= @range_stop %>;
+  option subnet-mask <%= @subnetmask %>;
+  option broadcast-address <%= @broadcast_address %>;
+  option routers <%= @routers.join ' ' %>;
+}

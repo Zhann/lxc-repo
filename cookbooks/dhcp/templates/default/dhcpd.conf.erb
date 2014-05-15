@@ -1,0 +1,31 @@
+<%
+  authoritative = 'autoritative'
+  @is_authoritative or authoritative = "## %s" % authoritative
+%>
+#############
+## General ##
+#############
+
+# Do not update on lease confirmation.
+ddns-update-style <%= @ddns_update_style %>;
+
+# General information.
+option domain-name "<%= @domain_name %>";
+option domain-name-servers <%= @domain_name_servers %>;
+
+# Lease times.
+default-lease-time <%= @default_lease_time %>;
+max-lease-time <%= @max_lease_time %>;
+
+# This service is the official DHCP server.
+<%= authoritative %>;
+
+# Send DHCP log messages to a different log file.
+log-facility <%= @log_type %>;
+
+
+############
+## Subnet ##
+############
+
+include "/etc/dhcp/subnet.list";
